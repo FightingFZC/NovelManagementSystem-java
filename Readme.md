@@ -1,5 +1,5 @@
 ### 一、前端项目源代码
-vue项目源代码[NovelManagementSystem-vue](https://github.com/FightingFZC/NovelManagementSystem-vue)
+vue项目源代码 [NovelManagementSystem-vue](https://github.com/FightingFZC/NovelManagementSystem-vue)
 
 ### 二、文章管理系统 需求分析
 ![avatar](./uml/文章管理系统用例图.png)
