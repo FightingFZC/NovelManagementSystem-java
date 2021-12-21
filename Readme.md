@@ -46,3 +46,6 @@
 #### 2.3 方法详解
 
 ![avatar](./uml/文章管理系统顺序图.png)
+
+### 三、前端项目源代码
+[vue项目源代码](https://github.com/FightingFZC/NovelManagementSystem-vue)
