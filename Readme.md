@@ -1,5 +1,5 @@
 ### 一、文章管理系统 需求分析
-
+![avatar](./uml/文章管理系统用例图.png)
 1. 用户
 
    1. 登陆
@@ -37,10 +37,12 @@
    3. creationTime
    4. lastModifiedTime
    5. data
+   6. title
 
 #### 2.2 实体类
 
-见UML类图
+![avatar](./uml/文章管理系统类图.png)
 
 #### 2.3 方法详解
 
+![avatar](./uml/文章管理系统顺序图.png)
