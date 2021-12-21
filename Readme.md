@@ -1,4 +1,7 @@
-### 一、文章管理系统 需求分析
+### 一、前端项目源代码
+vue项目源代码[NovelManagementSystem-vue](https://github.com/FightingFZC/NovelManagementSystem-vue)
+
+### 二、文章管理系统 需求分析
 ![avatar](./uml/文章管理系统用例图.png)
 1. 用户
 
@@ -17,9 +20,9 @@
    3. 文章管理
       - 对用户文章的**增删改查**
 
-### 二、文章管理系统 设计
+### 三、文章管理系统 设计
 
-#### 2.1 数据库（nms）设计
+#### 3.1 数据库（nms）设计
 
 1. user
    1. username(primary key)
@@ -39,13 +42,10 @@
    5. data
    6. title
 
-#### 2.2 实体类
+#### 3.2 实体类
 
 ![avatar](./uml/文章管理系统类图.png)
 
-#### 2.3 方法详解
+#### 3.3 方法详解
 
 ![avatar](./uml/文章管理系统顺序图.png)
-
-### 三、前端项目源代码
-[vue项目源代码](https://github.com/FightingFZC/NovelManagementSystem-vue)
