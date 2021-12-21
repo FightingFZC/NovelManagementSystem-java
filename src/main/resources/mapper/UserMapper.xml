@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fzc.nms.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.fzc.nms.domain.User">
+            <id property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="headImage" column="headImage" jdbcType="VARCHAR"/>
+            <result property="isFrozen" column="isFrozen" jdbcType="BOOLEAN"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        username,password,headImage,
+        isFrozen,email
+    </sql>
+    <insert id="insertUser">
+        insert into user(username, password, email) values(#{username}, #{password},
+                                                           #{email})
+    </insert>
+    <update id="updateUser">
+        update user set
+                        password = #{password},
+                        headImage = #{headImage},
+                        isFrozen = #{isFrozen},
+                        email = #{email}
+        where username = #{username}
+    </update>
+    <update id="setUsersFrozen">
+        update user set isFrozen = not isFrozen where username in
+        <foreach collection="array" separator="," item="username" open="("
+                 close=")">
+            #{username}
+        </foreach>
+    </update>
+    <delete id="deleteUser">
+        delete from user where username = #{username}
+    </delete>
+    <delete id="deleteUsers">
+        delete from user where username in
+        <foreach collection="array" separator="," item="username" open="("
+                 close=")">
+            #{username}
+        </foreach>
+    </delete>
+    <select id="selectUser" resultType="com.fzc.nms.domain.User">
+        select <include refid="Base_Column_List"></include> from user where username = #{username}
+    </select>
+    <select id="selectAll" resultType="com.fzc.nms.domain.User">
+        select <include refid="Base_Column_List"></include> from user limit
+        #{page}, #{length}
+    </select>
+    <select id="selectTotal" resultType="java.lang.Integer">
+        select count(username) from user
+    </select>
+
+</mapper>

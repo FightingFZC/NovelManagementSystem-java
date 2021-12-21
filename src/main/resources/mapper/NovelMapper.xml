@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fzc.nms.mapper.NovelMapper">
+
+    <resultMap id="BaseResultMap" type="com.fzc.nms.domain.Novel">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="creationTime" column="creationTime" jdbcType="TIMESTAMP"/>
+            <result property="lastModifiedTime" column="lastModifiedTime" jdbcType="TIMESTAMP"/>
+            <result property="data" column="data" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,username,creationTime,lastModifiedTime,data,title
+    </sql>
+    <insert id="insertNovel">
+        insert into novel(username, creationtime, lastmodifiedtime, data, title)
+        values(#{username}, #{creationTime}, #{lastModifiedTime}, #{data},
+               #{title})
+    </insert>
+    <update id="modifyNovel">
+        update novel set
+        lastModifiedTime = #{lastModifiedTime}, data = #{data}, title = #{title}
+        where id = #{id}
+    </update>
+    <delete id="deleteNovelById">
+        delete from novel where id = #{id}
+    </delete>
+    <delete id="deleteNovelByIds">
+        delete from novel
+        where id in
+        <foreach collection="array" separator="," item="id" open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <delete id="deleteNovelByUsername">
+        delete from novel where username = #{username}
+    </delete>
+    <select id="selectNovelById" resultType="com.fzc.nms.domain.Novel">
+        select <include refid="Base_Column_List"></include> from novel where
+        id = #{id}
+    </select>
+    <select id="selectNovelByUsername"
+            resultType="com.fzc.nms.domain.Novel">
+        select <include refid="Base_Column_List"></include> from novel where
+        username = #{username} order by creationTime limit #{startIndex},
+        #{length}
+    </select>
+    <select id="selectTotalByUsername" resultType="java.lang.Integer">
+        select count(id) from novel
+        where username = #{username}
+    </select>
+</mapper>

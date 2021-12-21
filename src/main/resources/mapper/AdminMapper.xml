@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fzc.nms.mapper.AdminMapper">
+
+    <resultMap id="BaseResultMap" type="com.fzc.nms.domain.Admin">
+            <id property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="headImage" column="headImage" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        username,password,headImage
+    </sql>
+    <select id="selectAdmin" resultType="com.fzc.nms.domain.Admin">
+        select <include refid="Base_Column_List"></include> from admin where
+        username = #{username}
+    </select>
+</mapper>
